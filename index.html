@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Vansh Afterschool Club</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/vue@3.4.38/dist/vue.global.prod.js"></script>
-    <script src="product.js"></script>
+  <meta charset="UTF-8">
+  <title>Vansh Afterschool Club</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.4.38/dist/vue.global.prod.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="lessons.js"></script>
 </head>
 <body>
 <div id="app">
-   <header>
-    <h1 v-text="sitename"></h1>
-    <button v-on:click="toggleCheckout">
-      {{ showProduct ? 'Checkout (' + cartCount + ')' : 'Back to products' }}
-    </button>
-  </header>   
+  <header>
+    <h1>{{ sitename }}</h1>
+  </header>
+
+  <main>
+    <div v-for="lesson in lessons" :key="lesson.id">
+      <i :class="'fa-solid ' + lesson.icon"></i>
+      <h2>{{ lesson.subject }}</h2>
+      <p>Location: {{ lesson.location }}</p>
+      <p>Price: £{{ lesson.price }}</p>
+      <p>Spaces: {{ lesson.spaces }}</p>
+    </div>
+  </main>
+</div>
+
+<script>
+const app = Vue.createApp({
+  data() {
+    return {
+      sitename: "Vansh Afterschool Club",
+      lessons: lessonsData,
+    };
+  },
+}).mount("#app");
+</script>
+</body>
+</html>
