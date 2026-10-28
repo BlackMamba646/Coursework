@@ -3,6 +3,7 @@
 <head>
     <title>After School Classes</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="lessons.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -142,7 +143,7 @@
 
         <div class="lessons">
             <div class="lesson-card" v-for="lesson in filteredAndSortedLessons" v-bind:key="lesson.id">
-                <div class="icon"><i v-bind:class="lesson.icon"></i></div>
+                <div class="icon"><i v-bind:class="'fas ' + lesson.icon"></i></div>
                 <h3>{{ lesson.subject }}</h3>
                 <p><i class="fas fa-map-marker-alt"></i> {{ lesson.location }}</p>
                 <p class="price">£{{ lesson.price }}</p>
@@ -212,18 +213,7 @@ var app = new Vue({
         customerPhone: '',
         orderSubmitted: false,
         lastOrderName: '',
-        lessons: [
-            { id: 1, subject: 'Mathematics', location: 'Hendon', price: 100, spaces: 5, icon: 'fas fa-calculator' },
-            { id: 2, subject: 'English', location: 'Colindale', price: 80, spaces: 5, icon: 'fas fa-book' },
-            { id: 3, subject: 'Science', location: 'Brent Cross', price: 90, spaces: 5, icon: 'fas fa-flask' },
-            { id: 4, subject: 'Art', location: 'Golders Green', price: 70, spaces: 5, icon: 'fas fa-palette' },
-            { id: 5, subject: 'Music', location: 'Hendon', price: 85, spaces: 5, icon: 'fas fa-music' },
-            { id: 6, subject: 'Football', location: 'Edgware', price: 60, spaces: 5, icon: 'fas fa-futbol' },
-            { id: 7, subject: 'Swimming', location: 'Finchley', price: 95, spaces: 5, icon: 'fas fa-person-swimming' },
-            { id: 8, subject: 'Drama', location: 'Mill Hill', price: 75, spaces: 5, icon: 'fas fa-masks-theater' },
-            { id: 9, subject: 'French', location: 'Colindale', price: 110, spaces: 5, icon: 'fas fa-language' },
-            { id: 10, subject: 'Computing', location: 'Hendon', price: 120, spaces: 5, icon: 'fas fa-laptop-code' }
-        ]
+        lessons: lessonsData
     },
     computed: {
         isNameValid: function() {
